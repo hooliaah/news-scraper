@@ -1,6 +1,7 @@
 // display info for all articles
 $.getJSON("/articles", function (data) {
     for (let i = 0; i < data.length; i++) {
+        // add the title and link to a new div, so can style the title and link separately...
         $("#articles").append("<p data-id='" + data[i]._id + "'><strong>" + data[i].title + "</strong><br />" + data[i].link + "</p>");
     }
 });
