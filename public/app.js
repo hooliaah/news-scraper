@@ -1,7 +1,7 @@
 // display info for all articles
 $.getJSON("/articles", function (data) {
     for (let i = 0; i < data.length; i++) {
-        $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+        $("#articles").append("<p data-id='" + data[i]._id + "'><strong>" + data[i].title + "</strong><br />" + data[i].link + "</p>");
     }
 });
 
@@ -19,8 +19,8 @@ $(document).on("click", "p", function () {
         .then(function (data) {
             console.log(data);
             $("#notes").append("<h2>" + data.title + "</h2>");
-            $("#notes").append("<input id='titleinput' name='title' >");
-            $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+            $("#notes").append("<input id='titleinput' name='title' value='note title'>");
+            $("#notes").append("<textarea id='bodyinput' name='body' >note text</textarea>");
             $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
             $("#notes").append("<button data-id='" + data._id + "' id='delete-note'>Delete Note</button>");
 
@@ -68,3 +68,5 @@ $(document).on("click", "#delete-note", function () {
     $("#titleinput").val("");
     $("#bodyinput").val("");
 });
+
+// add PUT route to update notes
